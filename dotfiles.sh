@@ -79,36 +79,21 @@ dnf check-update
 sudo dnf install code
 
 # install extensions
-# @cleanup these are probably not all needed
 code --install-extension \
-    2gua.rainbow-brackets \
     anseki.vscode-color \
     bibhasdn.unique-lines \
     codezombiech.gitignore \
     eamodio.gitlens \
-    EditorConfig.EditorConfig \
     felipecaputo.git-project-manager \
-    formulahendry.code-runner \
-    hackwaly.ocaml \
-    itryapitsin.Scala \
-    lukehoban.Go \
-    magicstack.MagicPython \
-    mathiasfrohlich.Kotlin \
-    mattn.Lisp \
     mauve.terraform \
     ms-python.python \
-    ms-vscode.cpptools \
     naereen.makefiles-support-for-vscode \
     nopjmp.fairyfloss \
-    octref.vetur \
     PeterJausovec.vscode-docker \
     PKief.material-icon-theme \
     slevesque.vscode-hexdump \
     timonwong.shellcheck \
-    vscodevim.vim \
-    wholroyd.jinja \
-    yzhang.markdown-all-in-one \
-    zhuangtongfa.Material-theme
+    wholroyd.jinja
 
 # install global settings
 mkdir -p ~/.config/Code/User
@@ -141,5 +126,6 @@ cp "$DOTFILES/bashrc.d/*" ~/.bashrc.d/
 cp "$DOTFILES/profile" ~/.profile
 
 # TODO install my own binaries to ~/bin
+# TODO compile sct.c
 # TODO install pipenv, docker, docker-compose, yed, alacritty?
 # TODO install configurations (i3? what else?)
