@@ -56,7 +56,7 @@ sudo snap install spotify
     # lastpass
     curl -Lo lplinux.tar.bz2 https://lastpass.com/lplinux.tar.bz2
     tar xjvf lplinux.tar.bz2
-    ./lplinux/install_lastpass.sh
+    ./install_lastpass.sh
 )
 
 # fira code font
