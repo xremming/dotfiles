@@ -32,7 +32,9 @@ sudo dnf install -y \
     meld \
     mpv \
     youtube-dl \
+    imagemagick \
     dropbox
+
 
 dropbox start -i
 
