@@ -60,6 +60,14 @@ sudo snap install spotify
     rpm_url_install "$SLACK_URL" slack.rpm
 )
 
+# --- FIRA CODE FONT ---
+mkdir -p ~/.local/share/fonts/
+for type in Bold Light Medium Regular Retina; do
+    curl -o ~/.local/share/fonts/FiraCode-${type}.ttf \
+    "https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-${type}.ttf?raw=true"
+done
+fc-cache -f
+
 # --- VSCODE ---
 # from https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
