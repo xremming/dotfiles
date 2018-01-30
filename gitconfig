@@ -1,0 +1,24 @@
+[user]
+	email = maxremming@gmail.com
+	name = Maximilian Remming
+
+# only works on git version >=2.13
+# but having it here doesn't seem to
+# break older versions
+[includeIf "gitdir:~/work/"]
+	path = ~/.gitconfig-work
+
+[push]
+	default = simple
+
+[diff "image"]
+	command = imgdiff
+
+[merge]
+	tool = meld
+
+[alias]
+	dif = diff --staged
+	ch = checkout
+	st = status
+	co = commit
