@@ -8,14 +8,6 @@ function rpm_url_install() {
     sudo dnf install -y "./$2.rpm"
 }
 
-sudo dnf upgrade -y
-sudo dnf install -y git
-
-cd ~
-rm -rf .dotfiles
-git clone https://github.com/PolarPayne/dotfiles.git .dotfiles
-DOTFILES="$(pwd)/.dotfiles"
-
 # rpm fusion
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
