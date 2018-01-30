@@ -8,11 +8,6 @@ function rpm_url_install() {
     sudo dnf install "./$2.rpm"
 }
 
-if ! [ "$(lsb_release -i | cut -f 2)" == "Fedora" ]; then
-    echo "this script is only meant for Fedora"
-    exit 2
-fi
-
 sudo dnf upgrade -y
 sudo dnf install -y git
 
