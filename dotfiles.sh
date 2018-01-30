@@ -11,7 +11,7 @@ function rpm_url_install() {
 # rpm fusion
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-# install basic utilities and such
+# everything that we can install with dnf
 sudo dnf install -y \
     curl \
     wget \
@@ -25,6 +25,10 @@ sudo dnf install -y \
     mpv \
     youtube-dl \
     ImageMagick \
+    gcc \
+    clang \
+    @development-tools \
+    meld \
     dropbox
 
 
@@ -48,15 +52,20 @@ sudo snap install spotify
     # slack
     [ -z "$SLACK_URL" ] && SLACK_URL="https://downloads.slack-edge.com/linux_releases/slack-3.0.5-0.1.fc21.x86_64.rpm"
     rpm_url_install "$SLACK_URL" slack.rpm
+
+    # lastpass
+    curl -Lo lplinux.tar.bz2 https://lastpass.com/lplinux.tar.bz2
+    tar xjvf lplinux.tar.bz2
+    ./lplinux/install_lastpass.sh
 )
 
 # fira code font
 mkdir -p ~/.local/share/fonts/
 for type in Bold Light Medium Regular Retina; do
-    curl -o ~/.local/share/fonts/FiraCode-${type}.ttf \
+    curl -Lo ~/.local/share/fonts/FiraCode-${type}.ttf \
     "https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-${type}.ttf?raw=true"
 done
-fc-cache -f
+fc-cache -r
 
 # vscode
 # from https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
@@ -112,7 +121,7 @@ cp "$DOTFILES/start-agent" ~/.ssh/
 cp "$DOTFILES/bashrc" ~/.bashrc
 rm -rf ~/.bashrc.d/
 mkdir -p ~/.bashrc.d/
-cp "$DOTFILES/bashrc.d/*" ~/.bashrc.d/
+cp "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
 
 # profile
 cp "$DOTFILES/profile" ~/.profile
