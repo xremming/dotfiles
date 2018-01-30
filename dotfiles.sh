@@ -16,6 +16,9 @@ rm -rf .dotfiles
 git clone https://github.com/PolarPayne/dotfiles.git .dotfiles
 DOTFILES="$(pwd)/.dotfiles"
 
+# rpm fusion
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
 # install basic utilities and such
 sudo dnf install -y \
     curl \
@@ -26,12 +29,16 @@ sudo dnf install -y \
     ripgrep \
     fzf \
     micro \
-    meld
+    meld \
+    mpv \
+    dropbox
+
+dropbox start -i
 
 # create my usual directories
 mkdir -p work programming
 
-# --- SPOTIFY ---
+# spotify
 sudo snap install spotify
 
 # goto a temp directory since we'll download stuff
@@ -39,24 +46,16 @@ sudo snap install spotify
 (
     cd "$(mktemp -d)"
 
-    # --- GOOGLE-CHROME ---
+    # google-chrome
     [ -z "$GOOGLE_CHROME_URL" ] && GOOGLE_CHROME_URL="https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm"
     rpm_url_install "$GOOGLE_CHROME_URL" google-chrome
 
-    # --- DROPBOX ---
-    [ -z "$DROPBOX_URL" ] && DROPBOX_URL="https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2015.10.28-1.fedora.x86_64.rpm"
-    rpm_url_install "$DROPBOX_URL" dropbox
-
-    # used by dropbox start -i
-    sudo dnf install -y python2-pygpgme
-    dropbox start -i
-
-    # --- SLACK ---
+    # slack
     [ -z "$SLACK_URL" ] && SLACK_URL="https://downloads.slack-edge.com/linux_releases/slack-3.0.5-0.1.fc21.x86_64.rpm"
     rpm_url_install "$SLACK_URL" slack.rpm
 )
 
-# --- FIRA CODE FONT ---
+# fira code font
 mkdir -p ~/.local/share/fonts/
 for type in Bold Light Medium Regular Retina; do
     curl -o ~/.local/share/fonts/FiraCode-${type}.ttf \
@@ -64,7 +63,7 @@ for type in Bold Light Medium Regular Retina; do
 done
 fc-cache -f
 
-# --- VSCODE ---
+# vscode
 # from https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 cat << EOF | sudo tee /etc/yum.repos.d/vscode.repo
@@ -99,30 +98,28 @@ code --install-extension \
 mkdir -p ~/.config/Code/User
 cp "$DOTFILES/vscode-settings.json" ~/.config/Code/User/settings.json
 
-# --- PIA ---
+# TODO private internet access
 # download, unpack, run
-# TODO
 
-# --- OTHER STUFF ---
-# install linuxbrew
+# linuxbrew
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
-brew install mpv
-
-# --- PYENV ---
+# pyenv
 rm -rf ~/.pyenv
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 
-# --- DOTFILES ---
+# start-agent
 mkdir -p ~/.ssh/
 cp "$DOTFILES/start-agent" ~/.ssh/
 
+# bashrc
 cp "$DOTFILES/bashrc" ~/.bashrc
 rm -rf ~/.bashrc.d/
 mkdir -p ~/.bashrc.d/
 cp "$DOTFILES/bashrc.d/*" ~/.bashrc.d/
 
+# profile
 cp "$DOTFILES/profile" ~/.profile
 
 # TODO install my own binaries to ~/bin
