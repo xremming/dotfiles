@@ -24,7 +24,7 @@ sudo dnf install -y \
     meld \
     mpv \
     youtube-dl \
-    imagemagick \
+    ImageMagick \
     dropbox
 
 
