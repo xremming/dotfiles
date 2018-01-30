@@ -1,36 +1,35 @@
 #!/bin/bash
 
-set -xeu
+set -e
 set -o pipefail
 
 function rpm_url_install() {
-    curl "$1" -o "$2.rpm"
-    sudo dnf install "./$2.rpm"
+    curl "$1" -Lo "$2.rpm"
+    sudo dnf install -y "./$2.rpm"
 }
 
 sudo dnf upgrade -y
 sudo dnf install -y git
 
 cd ~
+rm -rf .dotfiles
 git clone https://github.com/PolarPayne/dotfiles.git .dotfiles
 DOTFILES="$(pwd)/.dotfiles"
-
-# create my usual directories
-mkdir -p work programming
 
 # install basic utilities and such
 sudo dnf install -y \
     curl \
     wget \
     atool \
-    snap \
+    snapd \
     cloc \
     ripgrep \
     fzf \
     micro \
     meld
 
-# fzf bash commands are in /usr/share/fzf/shell
+# create my usual directories
+mkdir -p work programming
 
 # --- SPOTIFY ---
 sudo snap install spotify
@@ -48,6 +47,8 @@ sudo snap install spotify
     [ -z "$DROPBOX_URL" ] && DROPBOX_URL="https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2015.10.28-1.fedora.x86_64.rpm"
     rpm_url_install "$DROPBOX_URL" dropbox
 
+    # used by dropbox start -i
+    sudo dnf install -y python2-pygpgme
     dropbox start -i
 
     # --- SLACK ---
@@ -66,7 +67,7 @@ fc-cache -f
 # --- VSCODE ---
 # from https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-cat << EOF > /etc/yum.repos.d/vscode.repo
+cat << EOF | sudo tee /etc/yum.repos.d/vscode.repo
 [code]
 name=Visual Studio Code
 baseurl=https://packages.microsoft.com/yumrepos/vscode
@@ -123,7 +124,22 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/i
 
 brew install mpv
 
-# TODO install dotfiles (bashrc, profile, gitconfig)
+# --- PYENV ---
+rm -rf ~/.pyenv
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+
+# --- DOTFILES ---
+mkdir -p ~/.ssh/
+cp "$DOTFILES/start-agent" ~/.ssh/
+
+cp "$DOTFILES/bashrc" ~/.bashrc
+rm -rf ~/.bashrc.d/
+mkdir -p ~/.bashrc.d/
+cp "$DOTFILES/bashrc.d/*" ~/.bashrc.d/
+
+cp "$DOTFILES/profile" ~/.profile
+
 # TODO install my own binaries to ~/bin
-# TODO install pyenv, pipenv, docker, docker-compose, yed, rg (ripgrep), fzf, alacritty?
-# TODO install configuration (i3?)
+# TODO install pipenv, docker, docker-compose, yed, alacritty?
+# TODO install configurations (i3? what else?)

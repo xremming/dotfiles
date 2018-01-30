@@ -1,0 +1,31 @@
+# prevent printing to stdout on cd
+# happens because of some setting or something
+alias cd='>/dev/null cd'
+
+# less is more
+alias more='less'
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias cl='clear'
+alias xx='exit'
+
+alias py='ipython3'
+alias py2='python2'
+
+alias copy='xclip -selection clipboard'
+alias cpr='rsync -P'
+
+alias g='git'
+
+alias cd..='cd ..'
+alias cd.='cd .'
+alias errcho='>&2 echo'
+
+alias scry='scrycli search'
+
+function trim() {
+    sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//'
+}
