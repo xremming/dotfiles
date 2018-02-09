@@ -140,7 +140,7 @@ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/dock
 sudo dnf install -y docker-ce
 sudo systemctl enable docker
 sudo systemctl start docker
-sudo groupadd docker
+sudo groupadd -f docker
 sudo usermod -aG docker $USER
 
 # docker-compose
