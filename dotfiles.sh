@@ -132,6 +132,10 @@ cp "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
 rm -f ~/.bash_profile
 cp "$DOTFILES/profile" ~/.profile
 
+# gitconfig
+cp "$DOTFILES/gitconfig" ~/.gitconfig
+cp "$DOTFILES/gitconfig-work" ~/.gitconfig-work
+
 # TODO install my own binaries to ~/bin
 # TODO compile sct.c
 
