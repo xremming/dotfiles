@@ -19,6 +19,7 @@ export FZF_DEFAULT_OPTS="--preview='if [ -f {} ]; then head -100 {}; elif [ -d {
 
 # linuxbrew
 PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
 MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
 INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 

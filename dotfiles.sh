@@ -9,7 +9,7 @@ function rpm_url_install() {
 }
 
 # rpm fusion
-sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # everything that we can install with dnf
 sudo dnf install -y \
@@ -29,6 +29,8 @@ sudo dnf install -y \
     clang \
     @development-tools \
     meld \
+    dnf-plugins-core \
+    bash-completion \
     dropbox
 
 
@@ -82,21 +84,24 @@ dnf check-update
 sudo dnf install code
 
 # install extensions
-code --install-extension \
-    anseki.vscode-color \
-    bibhasdn.unique-lines \
-    codezombiech.gitignore \
-    eamodio.gitlens \
-    felipecaputo.git-project-manager \
-    mauve.terraform \
-    ms-python.python \
-    naereen.makefiles-support-for-vscode \
-    nopjmp.fairyfloss \
-    PeterJausovec.vscode-docker \
-    PKief.material-icon-theme \
-    slevesque.vscode-hexdump \
-    timonwong.shellcheck \
-    wholroyd.jinja
+for ext in \
+"anseki.vscode-color" \
+"bibhasdn.unique-lines" \
+"codezombiech.gitignore" \
+"eamodio.gitlens" \
+"felipecaputo.git-project-manager" \
+"mauve.terraform" \
+"ms-python.python" \
+"naereen.makefiles-support-for-vscode" \
+"nopjmp.fairyfloss" \
+"PeterJausovec.vscode-docker" \
+"PKief.material-icon-theme" \
+"slevesque.vscode-hexdump" \
+"timonwong.shellcheck" \
+"wholroyd.jinja"
+do
+    code --install-extension $ext
+done
 
 # install global settings
 mkdir -p ~/.config/Code/User
@@ -124,9 +129,26 @@ mkdir -p ~/.bashrc.d/
 cp "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
 
 # profile
+rm -f ~/.bash_profile
 cp "$DOTFILES/profile" ~/.profile
 
 # TODO install my own binaries to ~/bin
 # TODO compile sct.c
-# TODO install pipenv, docker, docker-compose, yed, alacritty?
+
+# docker
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install docker-ce
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
+# docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo curl -L https://raw.githubusercontent.com/docker/compose/1.18.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+
+
+# TODO install rust and alacritty
+# TODO install yed https://www.yworks.com/resources/yed/demo/yEd-3.17.2.zip
 # TODO install configurations (i3? what else?)
