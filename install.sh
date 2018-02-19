@@ -7,8 +7,11 @@ sudo dnf upgrade -y
 sudo dnf install -y git
 
 cd ~
-rm -rf .dotfiles
-git clone https://github.com/PolarPayne/dotfiles.git .dotfiles
+if [ -d .dotfiles ]; then
+    (cd .dotfiles; git pull;)
+else
+    git clone https://github.com/PolarPayne/dotfiles.git .dotfiles
+fi
 DOTFILES="$(pwd)/.dotfiles"
 
 . "$DOTFILES/dotfiles.sh"

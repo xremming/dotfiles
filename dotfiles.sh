@@ -13,25 +13,25 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 
 # everything that we can install with dnf
 sudo dnf install -y \
-    curl \
-    wget \
-    atool \
-    snapd \
-    cloc \
-    ripgrep \
-    fzf \
-    micro \
-    meld \
-    mpv \
-    youtube-dl \
-    ImageMagick \
-    gcc \
-    clang \
     @development-tools \
-    meld \
-    dnf-plugins-core \
+    atool \
     bash-completion \
-    dropbox
+    clang \
+    cloc \
+    curl \
+    dnf-plugins-core \
+    dropbox \
+    fzf \
+    gcc \
+    ImageMagick \
+    meld \
+    micro \
+    mpv \
+    ripgrep \
+    ShellCheck \
+    snapd \
+    wget \
+    youtube-dl
 
 
 dropbox start -i
@@ -123,14 +123,13 @@ mkdir -p ~/.ssh/
 cp "$DOTFILES/start-agent" ~/.ssh/
 
 # bashrc
-cp "$DOTFILES/bashrc" ~/.bashrc
+cp -f "$DOTFILES/bashrc" ~/.bashrc
 rm -rf ~/.bashrc.d/
 mkdir -p ~/.bashrc.d/
 cp "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
 
 # profile
-rm -f ~/.bash_profile
-cp "$DOTFILES/profile" ~/.profile
+cp -f "$DOTFILES/profile" ~/.profile
 
 # gitconfig
 cp "$DOTFILES/gitconfig" ~/.gitconfig
@@ -144,6 +143,8 @@ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/dock
 sudo dnf install -y docker-ce
 sudo systemctl enable docker
 sudo systemctl start docker
+# quetionable, allows docker to do root thingies without sudo...
+# also very much handy, since otherwise docker always requires sudo...
 sudo groupadd -f docker
 sudo usermod -aG docker $USER
 
