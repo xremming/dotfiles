@@ -1,4 +1,5 @@
 export SHELL="/bin/bash"
+# change this?
 export TERMINAL="alacritty"
 export EDITOR="micro"
 export PAGER="less"

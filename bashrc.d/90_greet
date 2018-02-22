@@ -1,4 +1,6 @@
-if [ $(tput cols) -lt 60 ] || [ $(tput lines) -lt 50 ]; then
+if [ $(tput cols) -le 60 ] || [ $(tput lines) -le 46 ]; then
+    echo "such tiny terminal, no giraffe for you :("
+    echo "cols=$(tput cols)/60 lines=$(tput lines)/46"
     return
 fi
 

@@ -20,6 +20,7 @@ alias cpr='rsync -P'
 
 alias g='git'
 
+alias cd...='cd ../..'
 alias cd..='cd ..'
 alias cd.='cd .'
 alias errcho='>&2 echo'
@@ -28,4 +29,8 @@ alias scry='scrycli search'
 
 function trim() {
     sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//'
+}
+
+function search() {
+    find / -iname "$1" 2>/dev/null
 }

@@ -54,5 +54,18 @@
     "workbench.colorTheme": "fairyfloss",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
-    "material-icon-theme.folders.theme": "classic"
+    "material-icon-theme.folders.theme": "classic",
+    "[markdown]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.quickSuggestions": false,
+        "files.trimTrailingWhitespace": false
+    },
+    "[plaintext]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.quickSuggestions": false
+    },
+    "editor.wordWrapColumn": 80,
+    "gitlens.codeLens.scopes": [
+        "document"
+    ]
 }

@@ -8,6 +8,9 @@
 [includeIf "gitdir:~/work/"]
 	path = ~/.gitconfig-work
 
+[includeIf "gitdir:~/Dropbox/Reaktor/"]
+	path = ~/.gitconfig-work
+
 [push]
 	default = simple
 

@@ -23,6 +23,7 @@ sudo dnf install -y \
     dropbox \
     fzf \
     gcc \
+    guake \
     ImageMagick \
     meld \
     micro \
@@ -85,6 +86,8 @@ sudo dnf install code
 
 # install extensions
 for ext in \
+"PKief.material-icon-theme" \
+"PeterJausovec.vscode-docker" \
 "anseki.vscode-color" \
 "bibhasdn.unique-lines" \
 "codezombiech.gitignore" \
@@ -94,8 +97,7 @@ for ext in \
 "ms-python.python" \
 "naereen.makefiles-support-for-vscode" \
 "nopjmp.fairyfloss" \
-"PeterJausovec.vscode-docker" \
-"PKief.material-icon-theme" \
+"pnp.polacode" \
 "slevesque.vscode-hexdump" \
 "timonwong.shellcheck" \
 "wholroyd.jinja"
@@ -109,9 +111,6 @@ cp "$DOTFILES/vscode-settings.json" ~/.config/Code/User/settings.json
 
 # TODO private internet access
 # download, unpack, run
-
-# linuxbrew
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
 # pyenv
 rm -rf ~/.pyenv
@@ -145,14 +144,14 @@ sudo systemctl enable docker
 sudo systemctl start docker
 # quetionable, allows docker to do root thingies without sudo...
 # also very much handy, since otherwise docker always requires sudo...
-sudo groupadd -f docker
-sudo usermod -aG docker $USER
+# sudo groupadd -f docker
+# sudo usermod -aG docker $USER
 
 # docker-compose
-sudo curl -L "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+docker_compose_version=1.18.0
+sudo curl -L "https://github.com/docker/compose/releases/download/${docker_compose_version}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
-sudo curl -L https://raw.githubusercontent.com/docker/compose/1.18.0/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
-
+sudo curl -L https://raw.githubusercontent.com/docker/compose/${docker_compose_version}/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
 # TODO install rust and alacritty
 # TODO install yed https://www.yworks.com/resources/yed/demo/yEd-3.17.2.zip

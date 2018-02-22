@@ -23,8 +23,14 @@ __prompt_command() {
     PS1+="${sep}"
     PS1+="${green}\w${reset}"
 
-    local git=$(__git_ps1)
-    if [ ${#git} -gt 0 ]; then
+    local git_prompt_path=/usr/share/git-core/contrib/completion/git-prompt.sh
+    if [ -f $git_prompt_path ]; then
+        . $git_prompt_path
+        local git_prompt_available=1
+        local git=$(__git_ps1)
+    fi
+
+    if [ $git_prompt_available -eq 1 ] && [ ${#git} -gt 0 ]; then
         PS1+=" |"
         PS1+="${blue}${git}${reset}"
     fi
