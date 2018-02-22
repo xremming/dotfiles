@@ -23,17 +23,23 @@ sudo dnf install -y \
     dropbox \
     fzf \
     gcc \
+    gnome-tweak-tool \
     guake \
     ImageMagick \
     meld \
     micro \
     mpv \
+    nodejs \
+    python3 \
+    python3-pip \
     ripgrep \
     ShellCheck \
     snapd \
     wget \
     youtube-dl
 
+pip3 install --user pipenv scrycli awscli
+# TODO add wikix once it's packaged
 
 dropbox start -i
 
