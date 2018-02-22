@@ -128,6 +128,7 @@ mkdir -p ~/.bashrc.d/
 cp "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
 
 # profile
+rm -f ~/.bash_profile
 cp -f "$DOTFILES/profile" ~/.profile
 
 # gitconfig
