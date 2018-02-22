@@ -82,7 +82,7 @@ gpgcheck=1
 gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF
 dnf check-update
-sudo dnf install code
+sudo dnf install -y code
 
 # install extensions
 for ext in \
