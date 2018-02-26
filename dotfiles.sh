@@ -33,6 +33,7 @@ sudo dnf install -y \
     nodejs \
     python3 \
     python3-pip \
+    redhat-rpm-config \
     ripgrep \
     ShellCheck \
     snapd \
