@@ -18,7 +18,6 @@ if command -v aws &> /dev/null; then
 fi
 if command -v pyenv &> /dev/null; then
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
 fi
 if command -v gh &> /dev/null; then
     eval "$(gh completion -s bash)"

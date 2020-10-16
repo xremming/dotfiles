@@ -50,7 +50,8 @@ for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.git
     fi
 done
 
-# bashrc
+# bashrc and bash_profile
+cp -f "$DOTFILES"/bash_profile ~/.bash_profile
 cp -f "$DOTFILES"/bashrc ~/.bashrc
 mkdir -p ~/.bashrc.d/
 cp "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
