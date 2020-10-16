@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eo pipefail
+set -vxeo pipefail
 
 pacman -S --noconfirm --needed \
     bash-completion \
