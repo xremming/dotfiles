@@ -13,13 +13,21 @@ fi
 
 # --- completions ---
 
-complete -C 'aws_completer' aws
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-eval "$(gh completion -s bash)"
+if command -v aws &> /dev/null; then
+    complete -C 'aws_completer' aws
+fi
+if command -v pyenv &> /dev/null; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+if command -v gh &> /dev/null; then
+    eval "$(gh completion -s bash)"
+fi
 
 # added by travis gem
-[ ! -s "$HOME/.travis/travis.sh" ] || source "$HOME/.travis/travis.sh"
+if [ -f "$HOME/.travis/travis.sh" ]; then
+    . "$HOME/.travis/travis.sh"
+fi
 
 # --- .bashrd.d ---
 
