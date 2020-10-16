@@ -51,13 +51,13 @@ for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.git
 done
 
 # bashrc
-cp -f "$DOTFILES/bashrc" ~/.bashrc
+cp -f "$DOTFILES"/bashrc ~/.bashrc
 mkdir -p ~/.bashrc.d/
-cp "$DOTFILES/bashrc.d/*" ~/.bashrc.d/
+cp "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
 
 # profile
-cp -f "$DOTFILES/profile" ~/.profile
+cp -f "$DOTFILES"/profile ~/.profile
 
 # gitconfig
-cp "$DOTFILES/gitconfig" ~/.gitconfig
-cp "$DOTFILES/gitconfig-work" ~/.gitconfig-work
+cp "$DOTFILES"/gitconfig ~/.gitconfig
+cp "$DOTFILES"/gitconfig-work ~/.gitconfig-work
