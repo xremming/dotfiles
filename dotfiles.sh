@@ -1,7 +1,6 @@
 #!/bin/bash
 
-set -e
-set -o pipefail
+set -eo pipefail
 
 pacman -S --noconfirm \
     bash-completion \
@@ -33,8 +32,8 @@ pacman -S --noconfirm \
 # rustup
 rustup update
 
-BACKUP_DIR="$DOTFILES/backup-`date -Iminutes`"
-mkdir $BACKUP_DIR
+BACKUP_DIR="$DOTFILES/backup-$(date -Iminutes)"
+mkdir "$BACKUP_DIR"
 
 # awscli 2
 (
@@ -45,14 +44,14 @@ mkdir $BACKUP_DIR
 )
 
 # backup files just in case
-mv -f \
-    ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.gitconfig-work \
-    "$BACKUP_DIR"
+for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.gitconfig-work; do
+    mv -f "$file" "$BACKUP_DIR"
+done
 
 # bashrc
 cp -f "$DOTFILES/bashrc" ~/.bashrc
 mkdir -p ~/.bashrc.d/
-cp "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
+cp "$DOTFILES/bashrc.d/*" ~/.bashrc.d/
 
 # profile
 cp -f "$DOTFILES/profile" ~/.profile
