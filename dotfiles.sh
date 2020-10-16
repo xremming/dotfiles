@@ -45,7 +45,9 @@ mkdir "$BACKUP_DIR"
 
 # backup files just in case
 for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.gitconfig-work; do
-    mv -f "$file" "$BACKUP_DIR"
+    if [ -f "$file" ]; then
+        mv -f "$file" "$BACKUP_DIR"
+    fi
 done
 
 # bashrc
