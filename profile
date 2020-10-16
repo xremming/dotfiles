@@ -1,29 +1,24 @@
 export SHELL="/bin/bash"
-# change this?
-export TERMINAL="alacritty"
-export EDITOR="micro"
+export EDITOR="vim"
 export PAGER="less"
-export BROWSER="google-chrome"
+
+# --- GENERAL CONFIGURATION ---
 
 # less options
 export LESS="-r"
 
+# fzf
+export FZF_DEFAULT_OPTS="--preview='if [ -f {} ]; then head -100 {}; elif [ -d {} ]; then ls -a {}; fi' --height='50%'"
+
+# --- PATH CHANGES ---
+
 # private bins
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
 
-# fzf
-export FZF_DEFAULT_OPTS="--preview='if [ -f {} ]; then head -100 {}; elif [ -d {} ]; then ls -a {}; fi' --height='50%'"
-
-# linuxbrew
-PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
-MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
-
 export PATH
-export MANPATH
-export INFOPATH

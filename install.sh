@@ -3,8 +3,7 @@
 set -e
 set -o pipefail
 
-sudo dnf upgrade -y
-sudo dnf install -y git
+pacman -Syu git
 
 cd ~
 if [ -d .dotfiles ]; then

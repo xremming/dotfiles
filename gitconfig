@@ -1,27 +1,36 @@
 [user]
-	email = maxremming@gmail.com
-	name = Maximilian Remming
+        email = maximilian@remming.fi
+        name = Maximilian Remming
 
 # only works on git version >=2.13
 # but having it here doesn't seem to
 # break older versions
 [includeIf "gitdir:~/work/"]
-	path = ~/.gitconfig-work
-
-[includeIf "gitdir:~/Dropbox/Reaktor/"]
-	path = ~/.gitconfig-work
+        path = ~/.gitconfig-work
 
 [push]
-	default = simple
+        default = simple
 
-[diff "image"]
-	command = imgdiff
+[pull]
+        rebase = false
 
-[merge]
-	tool = meld
+[diff]
+        algorithm = histogram
+
+[difftool]
+        prompt = false
+        guitool = code
+
+[difftool.code]
+        cmd = code --diff
 
 [alias]
-	dif = diff --staged
-	ch = checkout
-	st = status
-	co = commit
+        dif = diff --staged
+        ch = checkout
+        st = status
+        allbranches = for-each-ref --sort=committerdate refs/heads/ refs/remotes --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+        branchhistory = for-each-ref --sort=-committerdate --format='%(refname:short): %(committerdate:relative)'
+
+[credential]
+        # save credentials for 36 hours
+        helper = cache --timeout=129600

@@ -5,6 +5,7 @@ alias cd='>/dev/null cd'
 # less is more
 alias more='less'
 
+alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -12,25 +13,13 @@ alias l='ls -CF'
 alias cl='clear'
 alias xx='exit'
 
-alias py='ipython3'
-alias py2='python2'
-
-alias copy='xclip -selection clipboard'
-alias cpr='rsync -P'
-
-alias g='git'
+alias py='ipython --no-confirm-exit'
+alias pp="pipenv run -- python"
 
 alias cd...='cd ../..'
 alias cd..='cd ..'
 alias cd.='cd .'
-alias errcho='>&2 echo'
-
-alias scry='scrycli search'
 
 function trim() {
     sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//'
-}
-
-function search() {
-    find / -iname "$1" 2>/dev/null
 }
