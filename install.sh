@@ -4,7 +4,7 @@ set -e
 set -o pipefail
 
 pacman-key --init
-pacman -Syu --noconfirm git
+pacman -Syu --noconfirm --needed git
 
 cd ~
 if [ -d .dotfiles ]; then

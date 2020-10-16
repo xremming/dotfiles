@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-pacman -S --noconfirm \
+pacman -S --noconfirm --needed \
     bash-completion \
     fzf \
     ripgrep \
