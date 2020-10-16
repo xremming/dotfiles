@@ -1,0 +1,17 @@
+function exists {
+    while [ $# -gt 0 ]; do
+        command -v "$1" &> /dev/null
+        shift
+    done
+}
+
+exists aws aws_completer \
+&& complete -C 'aws_completer' aws
+
+exists pyenv \
+&& eval "$(pyenv init -)"
+
+exists gh \
+&& eval "$(gh completion -s bash)"
+
+unset -f exists

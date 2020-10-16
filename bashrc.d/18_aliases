@@ -20,6 +20,6 @@ alias cd...='cd ../..'
 alias cd..='cd ..'
 alias cd.='cd .'
 
-function trim() {
+function trim {
     sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//'
 }
