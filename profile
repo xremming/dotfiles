@@ -2,14 +2,6 @@ export SHELL="/bin/bash"
 export EDITOR="vim"
 export PAGER="less"
 
-# --- GENERAL CONFIGURATION ---
-
-# less options
-export LESS="-r"
-
-# fzf
-export FZF_DEFAULT_OPTS="--preview='if [ -f {} ]; then head -100 {}; elif [ -d {} ]; then ls -a {}; fi' --height='50%'"
-
 # --- PATH CHANGES ---
 
 # private bins

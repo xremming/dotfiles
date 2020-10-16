@@ -15,3 +15,9 @@ exists gh \
 && eval "$(gh completion -s bash)"
 
 unset -f exists
+
+# --- specific ---
+
+if [ -f "$HOME/.travis/travis.sh" ]; then
+    . "$HOME/.travis/travis.sh"
+fi

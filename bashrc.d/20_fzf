@@ -1,0 +1,9 @@
+if [ -f /usr/share/fzf/completion.bash ]; then
+    . /usr/share/fzf/completion.bash
+fi
+
+if [ -f /usr/share/fzf/key-bindings.bash ]; then
+    . /usr/share/fzf/key-bindings.bash
+fi
+
+export FZF_DEFAULT_OPTS="--preview='if [ -f {} ]; then head -100 {}; elif [ -d {} ]; then ls -a {}; fi' --height='50%'"
