@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-pacman \
+pacman -S --noconfirm \
     bash-completion \
     fzf \
     ripgrep \

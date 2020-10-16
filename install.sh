@@ -3,7 +3,7 @@
 set -e
 set -o pipefail
 
-pacman -Syu git
+pacman -Syu --noconfirm git
 
 cd ~
 if [ -d .dotfiles ]; then
