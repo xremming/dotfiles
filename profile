@@ -1,5 +1,5 @@
 export SHELL="/bin/bash"
-export EDITOR="vim"
+export EDITOR="kak"
 export PAGER="less"
 
 # --- PATH CHANGES ---
