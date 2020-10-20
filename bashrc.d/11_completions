@@ -14,6 +14,12 @@ exists pyenv \
 exists gh \
 && eval "$(gh completion -s bash)"
 
+exists rustup \
+&& eval "$(rustup completions bash rustup)"
+
+exists rustup cargo \
+&& eval "$(rustup completions bash cargo)"
+
 unset -f exists
 
 # --- specific ---
