@@ -27,7 +27,13 @@ pacman -S --noconfirm --needed \
     yarn \
     pandoc \
     jq \
-    kakoune
+    kakoune \
+    dnsutils \
+        whois \
+        traceroute \
+    base-devel \
+        gcc \
+        clang
 
 # rustup
 rustup update
