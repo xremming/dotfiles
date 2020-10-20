@@ -45,20 +45,26 @@ mkdir "$BACKUP_DIR"
 
 # backup files just in case
 for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.gitconfig-work; do
-    if [ -f "$file" ]; then
+    # is either a file or a symlink
+    if [ -e "$file" ]; then
+        # is a symlink
+        if [ -L "$file" ]; then
+            continue
+        fi
+
         mv -f "$file" "$BACKUP_DIR"
     fi
 done
 
 # bashrc and bash_profile
-cp -f "$DOTFILES"/bash_profile ~/.bash_profile
-cp -f "$DOTFILES"/bashrc ~/.bashrc
+ln -s "$DOTFILES"/bash_profile ~/.bash_profile
+ln -s "$DOTFILES"/bashrc ~/.bashrc
 mkdir -p ~/.bashrc.d/
-cp "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
+ln -s "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
 
 # profile
-cp -f "$DOTFILES"/profile ~/.profile
+ln -s "$DOTFILES"/profile ~/.profile
 
 # gitconfig
-cp "$DOTFILES"/gitconfig ~/.gitconfig
-cp "$DOTFILES"/gitconfig-work ~/.gitconfig-work
+ln -s "$DOTFILES"/gitconfig ~/.gitconfig
+ln -s "$DOTFILES"/gitconfig-work ~/.gitconfig-work
