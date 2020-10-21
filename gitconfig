@@ -24,6 +24,15 @@
 [difftool.code]
         cmd = code --diff
 
+[core]
+        pager = delta
+
+[interactive]
+        diffFilter = delta --color-only
+
+[delta]
+        features = side-by-side line-numbers
+
 [alias]
         dif = diff --staged
         ch = checkout
