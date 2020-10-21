@@ -36,7 +36,10 @@ pacman -S --noconfirm --needed \
         clang
 
 # rustup
-rustup update
+rustup install stable
+
+# install tools from cargo
+cargo install starship git-delta
 
 BACKUP_DIR="$DOTFILES/backup-$(date -Iminutes)"
 mkdir "$BACKUP_DIR"
