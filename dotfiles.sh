@@ -39,7 +39,7 @@ pacman -S --noconfirm --needed \
 rustup install stable
 
 # install tools from cargo
-cargo install starship git-delta
+cargo install git-delta xsv
 
 BACKUP_DIR="$DOTFILES/backup-$(date -Iminutes)"
 mkdir "$BACKUP_DIR"
