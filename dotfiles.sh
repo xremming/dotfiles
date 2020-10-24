@@ -2,12 +2,13 @@
 
 set -vxeo pipefail
 
-pacman -S --noconfirm --needed \
+pacman -Syu --needed \
     bash-completion \
     fzf \
     ripgrep \
     wget \
     curl \
+    tree \
     github-cli \
     youtube-dl \
     atool \
