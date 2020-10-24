@@ -6,6 +6,7 @@ pacman -Syu --needed \
     bash-completion \
     fzf \
     ripgrep \
+    openssh \
     wget \
     curl \
     tree \
