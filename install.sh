@@ -12,6 +12,7 @@ if [ -d .dotfiles ]; then
 else
     git clone https://github.com/PolarPayne/dotfiles.git .dotfiles
 fi
+(cd .dotfiles; git remote set-url origin git@github.com:PolarPayne/dotfiles.git;)
 DOTFILES="$(pwd)/.dotfiles"
 
 . "$DOTFILES/dotfiles.sh"
