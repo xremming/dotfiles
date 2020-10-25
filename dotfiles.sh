@@ -7,8 +7,9 @@ pacman -Syu --needed \
     fzf \
     ripgrep \
     openssh \
-    wget \
-    curl \
+    rsync \
+        wget \
+        curl \
     tree \
     github-cli \
     youtube-dl \
