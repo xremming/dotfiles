@@ -19,7 +19,8 @@ pacman -Syu --needed \
     ffmpeg \
     shellcheck \
     python \
-    python-pip \
+        python-pip \
+        python-poetry \
     pyenv \
     ruby \
     racket \
