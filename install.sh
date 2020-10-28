@@ -4,6 +4,7 @@ set -e
 set -o pipefail
 
 pacman-key --init
+pacman-key --populate archlinux
 pacman -Syu --noconfirm --needed git
 
 cd ~
