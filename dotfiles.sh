@@ -21,14 +21,15 @@ pacman -Syu --needed \
     python \
         python-pip \
         python-poetry \
-    pyenv \
+        pyenv \
     ruby \
     racket \
     go \
     rustup \
     nano \
-    npm \
-    yarn \
+    nodejs \
+        npm \
+        yarn \
     pandoc \
     jq \
     kakoune \
@@ -37,7 +38,8 @@ pacman -Syu --needed \
         traceroute \
     base-devel \
         gcc \
-        clang
+        clang \
+        ninja
 
 # rustup
 rustup install stable
