@@ -21,6 +21,7 @@ pacman -Syu --needed \
     python \
         python-pip \
         python-poetry \
+        python-pipenv \
         pyenv \
     ruby \
     racket \
