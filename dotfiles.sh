@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -vxeo pipefail
+set -xeuo pipefail
 
 pacman -Syu --needed \
     bash-completion \
