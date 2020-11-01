@@ -19,6 +19,7 @@ pacman -Syu --needed \
     ffmpeg \
     shellcheck \
     python \
+    	ipython \
         python-pip \
         python-poetry \
         python-pipenv \
