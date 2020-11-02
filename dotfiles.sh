@@ -24,6 +24,10 @@ pacman -Syu --needed \
         python-poetry \
         python-pipenv \
         pyenv \
+        python-boto3 \
+        python-requests \
+        python-numpy \
+        jupyterlab \
     ruby \
     racket \
     go \
