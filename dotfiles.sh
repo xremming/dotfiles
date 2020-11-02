@@ -68,13 +68,14 @@ mkdir "$BACKUP_DIR"
 for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.gitconfig-work; do
     # is either a file or a symlink
     if [ -e "$file" ]; then
-        # is a symlink
         if [ -L "$file" ]; then
-            continue
+            # is a symlink
+            rm -f "$file"
+        else
+            # is a normal file
+            mv -f "$file" "$BACKUP_DIR"
         fi
-
-        mv -f "$file" "$BACKUP_DIR"
-    fi
+   fi
 done
 
 # bashrc and bash_profile
