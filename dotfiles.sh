@@ -24,6 +24,12 @@ pacman -Syu --needed \
         python-poetry \
         python-pipenv \
         pyenv \
+        python-isort \
+        python-black \
+        python-pylint \
+        python-pycodestyle \
+        python-pytest \
+        mypy \
         python-boto3 \
         python-requests \
         python-numpy \
