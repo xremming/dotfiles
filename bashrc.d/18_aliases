@@ -14,7 +14,7 @@ alias cl='clear'
 alias xx='exit'
 
 alias py='ipython --no-confirm-exit'
-alias pp="pipenv run -- python"
+alias pp="poetry run python"
 
 alias cd...='cd ../..'
 alias cd..='cd ..'
