@@ -39,6 +39,7 @@ pacman -Syu --needed \
     go \
     rustup \
     nano \
+    docker \
     nodejs \
         npm \
         yarn \
