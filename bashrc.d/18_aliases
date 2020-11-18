@@ -20,6 +20,14 @@ alias cd...='cd ../..'
 alias cd..='cd ..'
 alias cd.='cd .'
 
+function e {
+    if [ $# -eq 0 ]; then
+        "$EDITOR" "$(rg --files | fzf)"
+    else
+        "$EDITOR" "$@"
+    fi
+}
+
 function trim {
     sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//'
 }
