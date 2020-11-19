@@ -1,2 +1,6 @@
 # less options
 export LESS="-r"
+
+# AWS SDK, always load full config
+# AWS GO SDK does not pick up assume roles without this
+export AWS_SDK_LOAD_CONFIG=1
