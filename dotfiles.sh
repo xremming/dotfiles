@@ -17,6 +17,7 @@ pacman -Syu --needed \
         bzip2 cpio gzip lha xz lzop p7zip tar unace unrar zip unzip \
     imagemagick \
     ffmpeg \
+    gifsicle \
     shellcheck \
     python \
     	ipython \
@@ -52,7 +53,8 @@ pacman -Syu --needed \
     base-devel \
         gcc \
         clang \
-        ninja
+        ninja \
+    strace
 
 # rustup
 rustup install stable
