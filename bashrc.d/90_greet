@@ -1,6 +1,12 @@
 if [ $(tput cols) -le 60 ] || [ $(tput lines) -le 46 ]; then
-    echo "such tiny terminal, no giraffe for you :("
-    echo "cols=$(tput cols)/60 lines=$(tput lines)/46"
+    cat << 'EOF'
+ _,,
+"-%\~
+   %\~
+   |%_`,~
+   /| ||
+  / | | \
+EOF
     return
 fi
 
