@@ -34,6 +34,7 @@ pacman -Syu --needed \
         python-boto3 \
         python-requests \
         python-numpy \
+        python-pillow \
         jupyterlab \
     ruby \
     racket \
