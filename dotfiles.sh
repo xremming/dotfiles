@@ -3,6 +3,7 @@
 set -xeuo pipefail
 
 pacman -Syu --needed \
+    man \
     bash-completion \
     fzf \
     ripgrep \
