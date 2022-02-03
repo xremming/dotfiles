@@ -4,3 +4,6 @@ export LESS="-r --mouse"
 # AWS SDK, always load full config
 # AWS GO SDK does not pick up assume roles without this
 export AWS_SDK_LOAD_CONFIG=1
+
+# pyenv init
+eval "$(pyenv init -)"

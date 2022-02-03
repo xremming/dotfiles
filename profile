@@ -13,5 +13,6 @@ PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
 export PATH
