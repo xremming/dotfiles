@@ -1,5 +1,5 @@
 export SHELL="/bin/bash"
-export EDITOR="kak"
+export EDITOR="code -w"
 export PAGER="less"
 
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
