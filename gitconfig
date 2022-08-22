@@ -21,8 +21,14 @@
         prompt = false
         guitool = code
 
-[difftool.code]
+[difftool "code"]
         cmd = code --diff
+
+[merge]
+	tool = code
+
+[mergetool "code"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 
 [core]
         pager = delta
