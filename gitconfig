@@ -49,6 +49,3 @@
 [credential]
         # save credentials for 36 hours
         helper = cache --timeout=129600
-
-[rerere]
-	enabled = true
