@@ -1,6 +1,7 @@
 export SHELL="/bin/bash"
 export EDITOR="code -w"
 export PAGER="less"
+export BROWSER="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
 
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
