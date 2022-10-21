@@ -1,7 +1,6 @@
 #!/bin/bash
 
-set -e
-set -o pipefail
+set -euo pipefail
 
 pacman-key --init
 pacman-key --populate archlinux
@@ -16,4 +15,4 @@ else
 fi
 (cd .dotfiles; git remote set-url origin git@github.com:xremming/dotfiles.git;)
 
-. "$DOTFILES/dotfiles.sh"
+bash "$(pwd)/.dotfiles/dotfiles.sh"

@@ -1,77 +1,10 @@
 #!/bin/bash
 
-set -xeuo pipefail
+set -euo pipefail
 
-pacman -Syu --needed \
-    man \
-    bash-completion \
-    fzf \
-    ripgrep \
-    fd \
-    git-delta \
-    openssh \
-    rsync \
-        wget \
-        curl \
-    tree \
-    github-cli \
-    youtube-dl \
-    atool \
-        bzip2 cpio gzip lha xz lzop p7zip tar unace unrar zip unzip \
-    imagemagick \
-    ffmpeg \
-    gifsicle \
-    shellcheck \
-    python \
-        ipython \
-        python-pip \
-        python-poetry \
-        python-pipenv \
-        pyenv \
-        python-isort \
-        python-black \
-        python-pylint \
-        python-pycodestyle \
-        python-pytest \
-        mypy \
-        python-boto3 \
-        python-requests \
-        python-numpy \
-        python-pillow \
-        jupyterlab \
-    ruby \
-    racket \
-    go \
-    rustup \
-    nano \
-    docker \
-    nodejs \
-        npm \
-        yarn \
-    pandoc \
-    jq \
-    dnsutils \
-        whois \
-        traceroute \
-    base-devel \
-        gcc \
-        clang \
-        ninja \
-    strace
+DOTFILES=$(dirname $(realpath $0))
 
-# rustup
-rustup install stable
-
-BACKUP_DIR="$DOTFILES/backup-$(date -Iminutes)"
-mkdir "$BACKUP_DIR"
-
-# awscli 2
-(
-    cd "$BACKUP_DIR"
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-    unzip awscliv2.zip
-    ./aws/install --update
-)
+./update.sh
 
 # backup files just in case
 for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.gitconfig-work; do
@@ -99,6 +32,8 @@ ln -s "$DOTFILES"/profile ~/.profile
 # gitconfig
 ln -s "$DOTFILES"/gitconfig ~/.gitconfig
 ln -s "$DOTFILES"/gitconfig-work ~/.gitconfig-work
+
+mkdir -p ~/.config
 
 # nvim
 ln -s "$DOTFILES"/nvim/ ~/.config
