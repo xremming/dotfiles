@@ -7,6 +7,8 @@ pacman -Syu --needed \
     bash-completion \
     fzf \
     ripgrep \
+    fd \
+    git-delta \
     openssh \
     rsync \
         wget \
@@ -21,7 +23,7 @@ pacman -Syu --needed \
     gifsicle \
     shellcheck \
     python \
-    	ipython \
+        ipython \
         python-pip \
         python-poetry \
         python-pipenv \
@@ -48,7 +50,6 @@ pacman -Syu --needed \
         yarn \
     pandoc \
     jq \
-    kakoune \
     dnsutils \
         whois \
         traceroute \
@@ -60,9 +61,6 @@ pacman -Syu --needed \
 
 # rustup
 rustup install stable
-
-# install tools from cargo
-cargo install git-delta xsv
 
 BACKUP_DIR="$DOTFILES/backup-$(date -Iminutes)"
 mkdir "$BACKUP_DIR"
