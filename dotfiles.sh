@@ -2,12 +2,18 @@
 
 set -euo pipefail
 
-DOTFILES=$(dirname $(realpath $0))
 
 ./update.sh
 
+DOTFILES=$(dirname $(realpath $0))
+
+BACKUP_DIR="$DOTFILES/backup-$(date --iso-8601=seconds --utc)"
+mkdir -p "$BACKUP_DIR"
+
 # backup files just in case
-for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.gitconfig-work; do
+for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.gitconfig-work ~/.config/nvim; do
+    echo "backup $file"
+
     # is either a file or a symlink
     if [ -e "$file" ]; then
         if [ -L "$file" ]; then
@@ -20,11 +26,12 @@ for file in ~/.bashrc ~/.bashrc.d ~/.bash_profile ~/.profile ~/.gitconfig ~/.git
    fi
 done
 
+echo "symlink configurations"
+
 # bashrc and bash_profile
 ln -s "$DOTFILES"/bash_profile ~/.bash_profile
 ln -s "$DOTFILES"/bashrc ~/.bashrc
-mkdir -p ~/.bashrc.d/
-ln -s "$DOTFILES"/bashrc.d/* ~/.bashrc.d/
+ln -s "$DOTFILES"/bashrc.d/ ~/.bashrc.d
 
 # profile
 ln -s "$DOTFILES"/profile ~/.profile
