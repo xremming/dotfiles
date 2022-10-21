@@ -101,3 +101,7 @@ ln -s "$DOTFILES"/profile ~/.profile
 # gitconfig
 ln -s "$DOTFILES"/gitconfig ~/.gitconfig
 ln -s "$DOTFILES"/gitconfig-work ~/.gitconfig-work
+
+# nvim
+ln -s "$DOTFILES"/nvim/ ~/.config
+nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
