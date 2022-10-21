@@ -1,7 +1,7 @@
 export SHELL="/bin/bash"
-export EDITOR="code -w"
+export EDITOR="nvim"
 export PAGER="less"
-export BROWSER="/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe"
+export BROWSER="cmd.exe /\c start chrome"
 
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
