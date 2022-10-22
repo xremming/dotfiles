@@ -14,6 +14,7 @@ opt.clipboard = "unnamedplus"
 
 opt.wildmode = { "longest", "full" }
 
+opt.scrolloff = 24
 opt.cursorline = true
 opt.number = true
 opt.relativenumber = true
