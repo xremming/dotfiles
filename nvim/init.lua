@@ -39,14 +39,12 @@ opt.termguicolors = true
 cmd.colorscheme("fairyfloss")
 
 -- Custom keybindings
-local silent = { silent = true, noremap = true }
-local map = vim.api.nvim_set_keymap
-
--- Window movement
-map("n", "<c-h>", "<c-w>h", silent)
-map("n", "<c-j>", "<c-w>j", silent)
-map("n", "<c-k>", "<c-w>k", silent)
-map("n", "<c-l>", "<c-w>l", silent)
+local silent = { silent = true, noremap = false }
+local remap = { remap = true }
+local map = vim.keymap.set
+function nmap(lhs, rhs)
+  vim.keymap.set("n", lhs, rhs, { noremap = true })
+end
 
 -- Custom commands
 cmd.command("-nargs=* Tf terminal terraform <args>")

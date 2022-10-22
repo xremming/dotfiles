@@ -15,35 +15,18 @@ return require("packer").startup(function(use)
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
-  use {
-    {
-      "williamboman/mason.nvim",
-      config = [[require("mason").setup()]]
-    },
-    {
-      "williamboman/mason-lspconfig.nvim",
-      config = [[require("mason-lspconfig").setup()]]
-    },
-    {
-      "neovim/nvim-lspconfig",
-      config = [[require("config.lspconfig")]]
-    },
-  }
-
-  use "github/copilot.vim"
-
+  -- LSP and auto-completion related things
   use {
     "ms-jpq/coq_nvim",
     requires = {
-      { "ms-jpq/coq.thirdparty", branch = "3p" },
-      { "ms-jpq/coq.artifacts", branch = "artifacts" },
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+      "ray-x/lsp_signature.nvim",
+      "github/copilot.vim",
+      "ms-jpq/coq.thirdparty",
     },
-    config = [[
-      vim.g.coq_settings = { auto_start = "shut-up" }
-      require("coq_3p") {
-        { src = "copilot", short_name = "COP", accept_key = "<c-f>" }
-      }
-    ]]
+    config = [[require("config.lspconfig")]]
   }
 
   use {
@@ -66,7 +49,7 @@ return require("packer").startup(function(use)
   use {
     "nvim-telescope/telescope.nvim", tag = "0.1.0",
     requires = {
-      {"nvim-lua/plenary.nvim"}
+      "nvim-lua/plenary.nvim"
     },
     config = [[
       local builtin = require("telescope.builtin")
