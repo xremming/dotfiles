@@ -58,7 +58,7 @@ go
 rustup
 nano
 docker
-nodejs
+nodejs-lts-gallium
 npm
 yarn
 pandoc
