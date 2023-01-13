@@ -1,5 +1,5 @@
 export SHELL="/bin/bash"
-export EDITOR="nvim"
+export EDITOR="helix"
 export PAGER="less"
 export BROWSER="cmd.exe /\c start chrome"
 
