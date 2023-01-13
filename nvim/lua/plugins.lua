@@ -66,6 +66,8 @@ return require("packer").startup(function(use)
     "tssm/fairyfloss.vim",
   }
 
+  use "chrisbra/csv.vim"
+
   if packer_bootstrap then
     require("packer").sync()
   end
