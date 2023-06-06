@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -euo pipefail
+
+pacman -Sy --noconfirm --needed
+{{- range .pacman_pkgs | sortAlpha | uniq | quoteList }} {{ . }}{{ end }}

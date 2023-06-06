@@ -5,11 +5,12 @@ function exists {
     done
 }
 
+eval "$(rtx activate bash)"
+exists rtx \
+&& eval "$(rtx completion bash)"
+
 exists aws aws_completer \
 && complete -C 'aws_completer' aws
-
-exists pyenv \
-&& eval "$(pyenv init -)"
 
 exists gh \
 && eval "$(gh completion -s bash)"
@@ -21,9 +22,3 @@ exists rustup cargo \
 && eval "$(rustup completions bash cargo)"
 
 unset -f exists
-
-# --- specific ---
-
-if [ -f "$HOME/.travis/travis.sh" ]; then
-    . "$HOME/.travis/travis.sh"
-fi

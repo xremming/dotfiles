@@ -1,0 +1,7 @@
+[user]
+email = maximilian@reaktor.com
+name = Maximilian Remming
+
+[credential]
+helper = !aws codecommit credential-helper $@
+UseHttpPath = true

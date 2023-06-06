@@ -1,2 +1,3 @@
 # Install
-Run `curl "https://raw.githubusercontent.com/xremming/dotfiles/master/install.sh" | bash`.
+
+Install `chezmoi` with `pacman -S chezmoi` then run `chezmoi init --apply xremming`.

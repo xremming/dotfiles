@@ -1,0 +1,63 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = true
+
+format = '''
+$username$hostname$directory$status$git_branch$git_commit$git_state$aws$python$golang$nodejs$cmd_duration
+$time$character
+'''
+
+# --- TOOLS ---
+
+[aws]
+style = "blue"
+format = '| [$profile@$region]($style) '
+
+[python]
+version_format = "$major.$minor"
+style = "green"
+format = '| [python$version]($style) '
+
+[golang]
+version_format = "$major"
+style = "blue"
+format = "| [go$version]($style)"
+
+[nodejs]
+version_format = "$major.$minor"
+style = "green"
+format = "| [node$version]($style) "
+
+# --- GIT ---
+
+[git_commit]
+only_detached = false
+format = '\[[$hash]($style)\] '
+
+# --- GENERAL ---
+
+[username]
+style_root = "bright-red bold"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+style = "bold green"
+format = "@[$hostname]($style) "
+
+[directory]
+truncate_to_repo = false
+use_os_path_sep = false
+truncation_symbol = "~/.../"
+style = "green"
+format = "| [$path]($style) "
+
+[status]
+disabled = false
+format = '\([$status]($style)\) '
+
+[time]
+disabled = false
+time_format = "%R"
+style = "red"
+format = '[\[$time\]]($style) '
