@@ -1,0 +1,60 @@
+[user]
+	email = maximilian@remming.fi
+	name = Maximilian Remming
+
+# only works on git version >=2.13
+# but having it here doesn't seem to
+# break older versions
+[includeIf "gitdir:~/work/"]
+	path = ~/.gitconfig-work
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[pull]
+	rebase = true
+
+[diff]
+	algorithm = histogram
+
+[difftool]
+	prompt = false
+	guitool = code
+
+[difftool "code"]
+	cmd = code --diff
+
+[merge]
+	tool = code
+
+[mergetool "code"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	features = side-by-side line-numbers
+
+[alias]
+	dif = diff --staged
+	ch = checkout
+	st = status
+	allbranches = for-each-ref --sort=committerdate refs/heads/ refs/remotes --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+	branchhistory = for-each-ref --sort=-committerdate --format='%(refname:short): %(committerdate:relative)'
+
+[credential]
+	# save credentials for 8 hours
+	helper = cache --timeout=28800
+
+{{- $ghPath := lookPath "gh" }}
+{{- if $ghPath }}
+[credential "https://github.com"]
+	helper = !{{ $ghPath }} auth git-credential
+[credential "https://gist.github.com"]
+	helper = !{{ $ghPath }} auth git-credential
+{{- end }}
