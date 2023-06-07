@@ -10,9 +10,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias cl='clear'
-alias xx='exit'
-
 alias py='ipython --no-confirm-exit'
 alias pp="poetry run python"
 
