@@ -6,5 +6,10 @@ if [ -f /usr/share/fzf/key-bindings.bash ]; then
     . /usr/share/fzf/key-bindings.bash
 fi
 
-export "FZF_DEFAULT_COMMAND=rg --files"
-export FZF_DEFAULT_OPTS="--preview='if [ -f {} ]; then head -100 {}; elif [ -d {} ]; then ls -a {}; fi' --height='50%'"
+export "FZF_CTRL_T_COMMAND=fd"
+export "FZF_CTRL_T_OPTS=--preview 'if [ -f {} ]; then bat --color=always {}; elif [ -d {} ]; then tree -L 2 -C {}; fi'"
+
+export "FZF_CTRL_R_OPTS=--layout=reverse --preview-window hidden"
+
+export "FZF_ALT_C_COMMAND=fd -t d"
+export "FZF_ALT_C_OPTS=--preview='tree -L 2 -C {}'"
