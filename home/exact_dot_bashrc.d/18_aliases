@@ -1,7 +1,3 @@
-# prevent printing to stdout on cd
-# happens because of some setting or something
-alias cd='>/dev/null cd'
-
 # less is more
 alias more='less'
 
@@ -19,7 +15,7 @@ alias cd.='cd .'
 
 function e {
     if [ $# -eq 0 ]; then
-        "$EDITOR" "$(rg --files | fzf)"
+        "$EDITOR" "$(rg --files | fzf --preview 'bat --color=always {}')"
     else
         "$EDITOR" "$@"
     fi
