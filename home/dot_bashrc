@@ -3,6 +3,9 @@
 # if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export COLORTERM=truecolor
+export TERM=xterm-256color
+
 # global bashrc
 [ -f /etc/bashrc ] && . /etc/bashrc
 
