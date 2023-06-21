@@ -2,6 +2,6 @@
 
 set -euo pipefail
 
-pacman -S --noconfirm --needed rustup
+pacman -S --needed rustup
 rustup install stable
 rustup default stable
