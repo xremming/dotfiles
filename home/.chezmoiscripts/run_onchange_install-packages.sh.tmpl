@@ -2,5 +2,6 @@
 
 set -euo pipefail
 
+pacman -Sy archlinux-keyring
 pacman -Sy --needed
 {{- range .pacman_pkgs | sortAlpha | uniq | quoteList }} {{ . }}{{ end }}
