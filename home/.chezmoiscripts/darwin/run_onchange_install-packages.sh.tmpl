@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -euo pipefail
+
+brew install
+{{- range .brew_pkgs | sortAlpha | uniq | quoteList }} {{ . }}{{ end }}

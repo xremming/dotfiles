@@ -37,13 +37,14 @@ format = '\[[$hash]($style)\] '
 # --- GENERAL ---
 
 [username]
+show_always = true
 style_root = "bright-red bold"
-format = "[$user]($style)"
+format = "[$user]($style)@"
 
 [hostname]
 ssh_only = false
 style = "bold green"
-format = "@[$hostname]($style) "
+format = "[$hostname]($style) "
 
 [directory]
 truncate_to_repo = false

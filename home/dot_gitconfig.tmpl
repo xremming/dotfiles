@@ -1,11 +1,12 @@
 [user]
-	email = maximilian@remming.fi
-	name = Maximilian Remming
+	email = {{ .email }}
+	name = {{ .name }}
 
-# only works on git version >=2.13
-# but having it here doesn't seem to
-# break older versions
+{{ if eq .chezmoi.os "linux" }}
 [includeIf "gitdir:~/work/"]
+{{ else }}
+[includeIf "gitdir:~/Work/"]
+{{ end }}
 	path = ~/.gitconfig-work
 
 [push]

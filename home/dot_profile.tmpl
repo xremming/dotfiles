@@ -1,0 +1,26 @@
+{{ if eq .chezmoi.os "linux" }}
+export SHELL="/bin/bash"
+{{ end }}
+
+{{ if eq .chezmoi.os "linux" }}
+export EDITOR="helix"
+alias hx=helix
+{{ else }}
+export EDITOR="hx"
+alias helix=hx
+{{ end }}
+
+export PAGER="less"
+
+{{ if eq .chezmoi.os "linux" }}
+export BROWSER="cmd.exe /\c start chrome"
+{{ end }}
+
+# --- PATH CHANGES ---
+
+# private bins
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+
+export PATH
