@@ -53,7 +53,7 @@
 	helper = cache --timeout=28800
 
 {{- $ghPath := lookPath "gh" }}
-{{- if $ghPath }}
+{{ if $ghPath }}
 [credential "https://github.com"]
 	helper = !{{ $ghPath }} auth git-credential
 [credential "https://gist.github.com"]
