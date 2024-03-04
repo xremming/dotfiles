@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -euo pipefail
-
-brew install bash
-echo "$(env which bash)" | sudo tee -a /etc/shells
-chsh -s "$(env which bash)" "{{ .chezmoi.username }}"
