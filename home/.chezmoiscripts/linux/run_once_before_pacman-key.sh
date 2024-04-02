@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-pacman-key --init
-pacman-key --populate archlinux
-pacman -Sy archlinux-keyring
-pacman -Sy unzip wget curl
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
+sudo pacman -Sy archlinux-keyring
+sudo pacman -Sy unzip wget curl
