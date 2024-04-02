@@ -5,8 +5,8 @@ function exists {
     done
 }
 
-eval "$(~/.local/share/rtx/bin/rtx activate -s bash)"
-eval "$(rtx completion bash)"
+eval "$(~/.local/bin/mise activate bash)"
+eval "$(mise completion bash)"
 
 exists aws aws_completer \
 && complete -C 'aws_completer' aws
