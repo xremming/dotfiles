@@ -16,6 +16,27 @@ Repo that contains my dotfiles. In addition to installing these, I also need to 
 4. Change default user to the created user.
    - In PowerShell `arch.exe config --default-user maximilian`.
 
+If X/Wayland applications do not work see [this ansewer on superuser.com](https://superuser.com/questions/1617298/wsl-2-running-ubuntu-x-server-cant-open-display#answer-1834709).
+Basically `/tmp/.X11-unix` needs to be removed and symlinked to `/mnt/wslg/.X11-unix`.
+
+This is best done as a systemd service.
+
+Create this file in `/etc/systemd/system/wslg.service` and run `systemctl enable wslg` to enable it.
+
+```
+[Unit]
+Description=symlink /tmp/.X11-unix
+After=systemd-tmpfiles-setup.service
+
+[Service]
+Type=oneshot
+ExecStart=rmdir /tmp/.X11-unix
+ExecStart=ln -s /mnt/wslg/.X11-unix /tmp/
+
+[Install]
+WantedBy=sysinit.target
+```
+
 ## Install
 
 1. Install `gh` (GitHub CLI) and run `gh auth login` to setup GitHub access with git.
