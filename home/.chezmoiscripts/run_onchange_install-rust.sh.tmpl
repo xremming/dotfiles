@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -euo pipefail
+
+{{ $rustupInstalled := true }}
+{{ if eq .chezmoi.os "darwin" }}
+    brew install rustup
+{{ else if eq .chezmoi.os "linux" }}
+    sudo pacman -S --needed rustup
+{{ else }}
+    {{ $rustupInstalled = false }}
+{{ end }}
+
+{{ if $rustupInstalled }}
+    rustup install stable
+    rustup default stable
+{{ end }}

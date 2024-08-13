@@ -1,0 +1,4 @@
+#!/bin/bash
+
+brew install
+{{- range .homebrew_pkgs | sortAlpha | uniq | quoteList }} {{ . }}{{ end }}

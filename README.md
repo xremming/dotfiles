@@ -37,11 +37,17 @@ ExecStart=ln -s /mnt/wslg/.X11-unix /tmp/
 WantedBy=sysinit.target
 ```
 
+## macOS Pre-Setup
+
+1. Install macOS CLI Developer Tools, e.g. by typing `git` and then following the instructions.
+2. Install [homebrew](https://brew.sh/) following their instructions.
+
 ## Install
 
 1. Install `gh` (GitHub CLI) and run `gh auth login` to setup GitHub access with git.
 2. Install `chezmoi` with your package manager.
    1. Arch: `pacman -S chezmoi`.
+   2. macOS: `brew install chezmoi`.
 3. Run `chezmoi init --apply xremming`
 
 ## Other

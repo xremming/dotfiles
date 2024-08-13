@@ -14,6 +14,8 @@ export PAGER="less"
 
 {{ if eq .chezmoi.os "linux" }}
 export BROWSER="cmd.exe /\c start chrome"
+{{ else if eq .chezmoi.os "darwin" }}
+export BROWSER="open"
 {{ end }}
 
 # --- PATH CHANGES ---
@@ -22,5 +24,9 @@ export BROWSER="cmd.exe /\c start chrome"
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
+
+{{ if eq .chezmoi.os "darwin" | and (isExecutable "/opt/homebrew/bin/brew") }}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{ end }}
 
 export PATH

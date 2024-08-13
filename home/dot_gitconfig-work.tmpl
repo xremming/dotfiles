@@ -8,10 +8,3 @@ name = {{ .name }}
 helper = !{{ $awsPath }} codecommit credential-helper $@
 UseHttpPath = true
 {{- end }}
-
-{{- $glabPath := lookPath "glab" }}
-{{ if $glabPath }}
-[credential "https://gitlab.sok.fi"]
-helper = !{{ $glabPath }} auth git-credential
-UseHttpPath = true
-{{- end }}
