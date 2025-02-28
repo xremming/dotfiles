@@ -1,17 +1,17 @@
 # less is more
 alias more='less'
 
-alias ls='ls --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -al'
+alias la='ls -a'
+alias ls=eza
+
+alias tree='eza -T'
 
 alias py='ipython --no-confirm-exit'
 alias pp="poetry run python"
 
-alias cd...='cd ../..'
-alias cd..='cd ..'
-alias cd.='cd .'
+alias ...='cd ../..'
+alias ..='cd ..'
 
 alias g=lazygit
 
