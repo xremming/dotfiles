@@ -1,6 +1,7 @@
 # less is more
 alias more='less'
 
+alias l='ls'
 alias ll='ls -al'
 alias la='ls -a'
 alias ls=eza
