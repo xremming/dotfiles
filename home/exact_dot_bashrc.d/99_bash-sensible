@@ -59,7 +59,7 @@ stty werase undef
 bind '"\C-w":backward-kill-word'
 
 # don't require double tap of tab for completions
-set show-all-if-ambiguous on
+bind 'set show-all-if-ambiguous on'
 
 # menu-complete
 bind '"\C-i": menu-complete'

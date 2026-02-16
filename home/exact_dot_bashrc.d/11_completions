@@ -1,6 +1,6 @@
 function exists {
     while [ $# -gt 0 ]; do
-        command -v "$1" &> /dev/null
+        command -v "$1" &> /dev/null || return 1
         shift
     done
 }
