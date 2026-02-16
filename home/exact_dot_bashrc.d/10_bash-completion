@@ -6,10 +6,6 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-if [ -f "/opt/homebrew/etc/bash_completion" ]; then
-    . "/opt/homebrew/etc/bash_completion"
-fi
-
-if [ -f "/opt/homebrew/etc/profile.d/bash_completion.sh" ]; then
+if [ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]; then
     . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 fi
