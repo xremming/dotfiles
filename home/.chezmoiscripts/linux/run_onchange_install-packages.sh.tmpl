@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
-sudo pacman -Sy archlinux-keyring
-sudo pacman -Sy --needed
-{{- range .pacman_pkgs | sortAlpha | uniq | quoteList }} {{ . }}{{ end }}
+# starship and lazygit are not in the official Fedora repos
+sudo dnf copr enable -y atim/starship
+sudo dnf copr enable -y atim/lazygit
+
+sudo dnf install -y --refresh
+{{- range .dnf_pkgs | sortAlpha | uniq | quoteList }} {{ . }}{{ end }}

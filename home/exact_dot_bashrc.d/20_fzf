@@ -1,23 +1,12 @@
-if [ -f /usr/share/fzf/completion.bash ]; then
-    . /usr/share/fzf/completion.bash
-fi
-
-if [ -f /usr/share/fzf/key-bindings.bash ]; then
-    . /usr/share/fzf/key-bindings.bash
-fi
-
-if [ -f /opt/homebrew/opt/fzf/shell/completion.bash ]; then
-    . /opt/homebrew/opt/fzf/shell/completion.bash
-fi
-
-if [ -f /opt/homebrew/opt/fzf/shell/key-bindings.bash ]; then
-    . /opt/homebrew/opt/fzf/shell/key-bindings.bash
+# sets up both completion and key bindings (fzf >= 0.48)
+if command -v fzf &> /dev/null; then
+    eval "$(fzf --bash)"
 fi
 
 export "FZF_CTRL_T_COMMAND=fd"
-export "FZF_CTRL_T_OPTS=--preview 'if [ -f {} ]; then bat --color=always {}; elif [ -d {} ]; then tree -L 2 -C {}; fi'"
+export "FZF_CTRL_T_OPTS=--preview 'if [ -f {} ]; then bat --color=always {}; elif [ -d {} ]; then eza -T -L 2 --color=always {}; fi'"
 
 export "FZF_CTRL_R_OPTS=--layout=reverse --preview-window hidden"
 
 export "FZF_ALT_C_COMMAND=fd -t d"
-export "FZF_ALT_C_OPTS=--preview='tree -L 2 -C {}'"
+export "FZF_ALT_C_OPTS=--preview='eza -T -L 2 --color=always {}'"
