@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# global mise config hash: {{ include "private_dot_config/mise/empty_config.toml" | sha256sum }}
+"$HOME/.local/bin/mise" install --yes
