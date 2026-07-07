@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(sudo *)"
+    ]
+  },
+  "model": "claude-fable-5[1m]",
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  },
+  "tui": "fullscreen",
+  "theme": "dark"
+}
