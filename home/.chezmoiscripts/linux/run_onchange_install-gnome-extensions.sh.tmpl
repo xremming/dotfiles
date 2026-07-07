@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if ! command -v gnome-extensions >/dev/null; then
+    exit 0
+fi
+
+shell_version=$(gnome-shell --version | awk '{print $3}')
+
+{{ range .gnome_extensions | sortAlpha | uniq }}
+uuid={{ . | quote }}
+if ! gnome-extensions info "$uuid" >/dev/null 2>&1; then
+    download_url=$(curl -sSfG https://extensions.gnome.org/extension-info/ \
+        --data-urlencode "uuid=$uuid" \
+        --data-urlencode "shell_version=$shell_version" | jq -re .download_url)
+    zip=$(mktemp --suffix=.shell-extension.zip)
+    curl -sSfL "https://extensions.gnome.org$download_url" -o "$zip"
+    gnome-extensions install --force "$zip"
+    rm -f "$zip"
+fi
+gnome-extensions enable "$uuid" ||
+    echo "NOTE: could not enable $uuid yet; log out/in and run: gnome-extensions enable $uuid"
+{{ end }}
+
+# GNOME flips this master switch on after a session crash, silently disabling
+# all user extensions (see docs/2026-07-06-gnome-extensions-disabled-after-crash.md)
+gsettings set org.gnome.shell disable-user-extensions false
