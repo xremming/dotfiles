@@ -1,1 +1,3 @@
 [tools]
+rtk = "latest"
+usage = "latest"
