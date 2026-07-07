@@ -1,3 +1,4 @@
 [tools]
 watchexec = "latest"
 usage = "latest"
+rtk = "latest"
