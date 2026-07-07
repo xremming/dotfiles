@@ -19,8 +19,19 @@ if ! gnome-extensions info "$uuid" >/dev/null 2>&1; then
     gnome-extensions install --force "$zip"
     rm -f "$zip"
 fi
-gnome-extensions enable "$uuid" ||
-    echo "NOTE: could not enable $uuid yet; log out/in and run: gnome-extensions enable $uuid"
+# Enable via dconf directly: `gnome-extensions enable` fails for extensions
+# the running shell hasn't loaded yet (i.e. installed since last login)
+python3 - "$uuid" <<'EOF'
+import sys
+from gi.repository import Gio
+
+uuid = sys.argv[1]
+settings = Gio.Settings.new("org.gnome.shell")
+enabled = settings.get_strv("enabled-extensions")
+if uuid not in enabled:
+    settings.set_strv("enabled-extensions", enabled + [uuid])
+    Gio.Settings.sync()
+EOF
 {{ end }}
 
 # GNOME flips this master switch on after a session crash, silently disabling
