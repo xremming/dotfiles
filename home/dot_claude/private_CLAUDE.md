@@ -4,6 +4,17 @@
 
 - Always use Context7 when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
 - Never commit changes or push code before the user explicitly asks for it.
+- You must never EVER apply or destroy Terraform/OpenTofu changes, not even when granted a permission. This applies regardless of how the command is invoked (e.g. through custom wrappers).
+  - Never run any of these (nor their equivalents through wrappers):
+    - `terraform apply`, `terraform destroy`
+    - `tofu apply`, `tofu destroy`
+    - `mise run tf apply`, `mise run tf destroy`
+    - `mise tf apply`, `mise tf destroy`
+  - Read-only commands are fine; use these instead:
+    - `terraform validate`, `terraform plan`
+    - `tofu validate`, `tofu plan`
+    - `mise run tf validate`, `mise run tf plan`
+    - `mise tf validate`, `mise tf plan`
 - Never use `find` with `-exec`, `-execdir`, or `-delete`. They are hard to review by humans and easy to make serious mistakes with.
   - Do not use similar options of other commands.
   - If a command needs to be ran for each result, prefer piping it to `xargs`.

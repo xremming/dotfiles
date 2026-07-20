@@ -6,7 +6,15 @@
   "permissions": {
     "allow": [],
     "deny": [
-      "Bash(sudo *)"
+      "Bash(sudo *)",
+      "Bash(terraform apply *)",
+      "Bash(terraform apply)",
+      "Bash(terraform destroy *)",
+      "Bash(terraform destroy)",
+      "Bash(tofu apply *)",
+      "Bash(tofu apply)",
+      "Bash(tofu destroy *)",
+      "Bash(tofu destroy)"
     ],
     "ask": [
       "Bash(gh pr create *)",
@@ -15,6 +23,7 @@
       "Bash(rm *)"
     ]
   },
+  "model": "claude-opus-4-8[1m]",
   "hooks": {
     "PreToolUse": [
       {
