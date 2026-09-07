@@ -2,3 +2,6 @@
 watchexec = "latest"
 usage = "latest"
 rtk = "latest"
+
+[settings]
+experimental = true
