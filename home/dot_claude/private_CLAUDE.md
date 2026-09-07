@@ -4,6 +4,9 @@
 
 - Always use Context7 when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
 - Never commit changes or push code before the user explicitly asks for it.
+- When you author content for an external collaboration tool (GitHub, Linear, etc.) — pull request or issue descriptions, comments, and reviews — end the body with a small footer on its own line, after a blank line, disclosing that it was AI-drafted. Add it only to content you write yourself; never add any footer to commit messages.
+  - Where raw HTML renders (e.g. GitHub): use `<sub>Drafted by Claude, reviewed by me before opening.</sub>` for PR descriptions, and `<sub>Drafted by Claude, reviewed by me.</sub>` for comments, issues, and reviews.
+  - Where it does not (e.g. Linear, which strips HTML): use an italic note instead, `_Drafted by Claude, reviewed by me._`, since there is no small-text option.
 - You must never EVER apply or destroy Terraform/OpenTofu changes, not even when granted a permission. This applies regardless of how the command is invoked (e.g. through custom wrappers).
   - Never run any of these (nor their equivalents through wrappers):
     - `terraform apply`, `terraform destroy`
