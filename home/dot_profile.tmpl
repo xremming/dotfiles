@@ -9,6 +9,11 @@ alias helix=hx
 
 export PAGER="less"
 
+# Leave two cores free so the desktop stays responsive during Rust builds.
+CARGO_BUILD_JOBS=$(( $(getconf _NPROCESSORS_ONLN) - 2 ))
+[ "$CARGO_BUILD_JOBS" -lt 1 ] && CARGO_BUILD_JOBS=1
+export CARGO_BUILD_JOBS
+
 {{ if eq .chezmoi.os "linux" }}
 export BROWSER="xdg-open"
 {{ else if eq .chezmoi.os "darwin" }}
