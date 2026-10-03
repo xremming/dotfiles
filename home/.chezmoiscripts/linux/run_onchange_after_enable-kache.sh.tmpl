@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# kache.service hash: {{ include "private_dot_config/systemd/user/kache.service" | sha256sum }}
+systemctl --user daemon-reload
+systemctl --user enable kache.service
+systemctl --user restart kache.service

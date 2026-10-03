@@ -35,4 +35,18 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 {{ end }}
 
+# Kache shims must come first so they intercept cc, c++ and cargo.
+case "$PATH" in
+    "$HOME/.local/lib/kache/shims"|"$HOME/.local/lib/kache/shims":*) ;;
+    *) PATH="$HOME/.local/lib/kache/shims:$PATH" ;;
+esac
+
 export PATH
+
+{{- $arch := get (dict "amd64" "X86_64" "arm64" "AARCH64") .chezmoi.arch }}
+{{- $target := get (dict "linux" "UNKNOWN_LINUX_GNU" "darwin" "APPLE_DARWIN") .chezmoi.os }}
+{{- if and $arch $target }}
+
+# Kache paces test binaries so they wait for the CPU slots builds use.
+[ -n "${CARGO_TARGET_{{ $arch }}_{{ $target }}_RUNNER-}" ] || export CARGO_TARGET_{{ $arch }}_{{ $target }}_RUNNER="kache test-runner"
+{{- end }}
