@@ -6,3 +6,5 @@ rtk = "latest"
 
 [settings]
 experimental = true
+# The 1Password desktop integration only trusts the setgid op from the system package.
+disable_tools = ["1password-cli", "op"]
