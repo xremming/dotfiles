@@ -2,7 +2,6 @@
 watchexec = "latest"
 usage = "latest"
 rtk = "latest"
-"cargo:kache" = "latest"
 
 [settings]
 experimental = true

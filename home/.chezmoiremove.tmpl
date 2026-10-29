@@ -1,0 +1,16 @@
+# Kache is no longer used, so clear out what it and its configuration left
+# behind. The Cargo config only ever set kache as the compiler wrapper.
+.cargo/config.toml
+.config/kache
+.local/lib/kache
+
+{{ if eq .chezmoi.os "darwin" }}
+Library/Caches/kache
+Library/LaunchAgents/ninja.kunobi.kache.plist
+Library/Logs/kache
+{{ end }}
+
+{{ if eq .chezmoi.os "linux" }}
+.cache/kache
+.config/systemd/user/kache.service
+{{ end }}
